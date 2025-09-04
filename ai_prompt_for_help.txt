@@ -1,0 +1,37 @@
+Feladatleírás AI programozási asszisztens számára
+
+**Projekt célja:**
+
+A feladat egy meglévő Next.js webalkalmazás (`lomedu_public_web`) sikeres telepítése (deployment) Firebase Hosting és Firebase Functions használatával. Az alkalmazás célja, hogy a `orlomed-f8f9f` Firebase projekt Firestore adatbázisából, egy `lomedu-publik` nevű kollekcióból származó dokumentumokat jelenítsen meg dinamikusan, szerveroldali rendereléssel (SSR). Az URL-ben kapott dokumentum ID alapján (`/doc/[id]`) kell a megfelelő Firestore dokumentumot lekérdezni és megjeleníteni.
+
+**A jelenlegi probléma:**
+
+A `firebase deploy` parancs futtatása sikertelen. A deployment során a `nextServer` nevű Cloud Function létrehozása a következő hibával áll le:
+
+`Failed to create 1st Gen function projects/orlomed-f8f9f/locations/us-central1/functions/nextServer: Default service account 'orlomed-f8f9f@appspot.gserviceaccount.com' doesn't exist. Please recreate this account or specify a different account.`
+
+Ez a hibaüzenet azért különösen rejtélyes, mert alapos vizsgálat után kiderült, hogy a hibaüzenet állítása **nem igaz**.
+
+**Eddigi hibaelhárítási lépések (amik már igazoltan megfelelőek és nem vezettek eredményre):**
+
+1.  **Firebase Hosting konfiguráció:** A kezdeti "Page Not Found" hiba (ami statikus hostingra utalt) javítva lett. A `firebase.json` fájl most már helyesen van beállítva szerveroldali rendereléshez: a `hosting` szekció egy `rewrite` szabállyal minden kérést a `nextServer` Cloud Function-re irányít.
+
+2.  **Cloud Function kód:** Létre lett hozva a `functions` mappa a szükséges `package.json`-nel és `index.js` fájllal. Az `index.js` a Next.js szervert indítja el a Cloud Function környezetben, és a `distDir` helyesen a projekt gyökerében lévő `.next` mappára mutat.
+
+3.  **A szolgáltatásfiók létezésének ellenőrzése:** A Google Cloud Platform (GCP) konzol `IAM & Admin` -> `IAM` felületén ellenőrizve lett, hogy az `orlomed-f8f9f@appspot.gserviceaccount.com` nevű "Principal" (tag) létezik a projektben. **Megerősítést nyert, hogy a fiók létezik.**
+
+4.  **A szolgáltatásfiók állapotának ellenőrzése:** A GCP konzol `IAM & Admin` -> `Service Accounts` felületén ellenőrizve lett a fiók állapota. **Megerősítést nyert, hogy a fiók státusza "Enabled" (Engedélyezve).**
+
+5.  **Jogosultságok "frissítése":** Az IAM oldalon a problémás szolgáltatásfiók `Editor` jogosultsága el lett távolítva, majd azonnal újra hozzá lett adva, hogy kikényszerítsük a jogosultságok frissítését a háttérrendszerekben. Ez a lépés sem oldotta meg a problémát.
+
+**Kérés az AI felé:**
+
+Kérlek, elemezd a fent leírt helyzetet. A hibaüzenet és az ellenőrzött tények (a fiók létezik és engedélyezve van) közötti ellentmondás alapján adj alternatív megoldási javaslatokat. Milyen egyéb, kevésbé nyilvánvaló oka lehet annak, hogy a Firebase deployment folyamata nem "látja" vagy nem tudja használni a létező és engedélyezett alapértelmezett szolgáltatásfiókot?
+
+Lehetséges irányok a vizsgálódásra:
+*   Vannak-e a projekten olyan policy-k (Organization Policies) vagy biztonsági beállítások, amik akadályozhatják a fiók használatát?
+*   Lehet-e a probléma a Google Cloud projekt számlázási állapotával (billing status)?
+*   Előfordulhat-e, hogy egy másik, a deploymenthez szükséges API nincs engedélyezve a projektben? (Bár a log szerint a `cloudfunctions`, `cloudbuild`, `artifactregistry` API-k rendben vannak).
+*   Van-e mód arra, hogy a deployment során explicit módon megadjunk egy másik, akár újonnan létrehozott szolgáltatásfiókot a Cloud Function futtatásához, kikerülve ezzel az alapértelmezett fiókot? Ha igen, hogyan?
+
+Kérlek, adj konkrét, lépésről-lépésre követhető javaslatokat a hiba további diagnosztizálására és megoldására.
