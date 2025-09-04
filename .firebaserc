@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "orlomed-f8f9f"
+  },
+  "targets": {
+    "orlomed-f8f9f": {
+      "hosting": {
+        "lomedu-public": [
+          "lomedu-public"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

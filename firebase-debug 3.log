@@ -1,0 +1,16 @@
+[debug] [2025-09-04T12:00:29.384Z] ----------------------------------------------------------------------
+[debug] [2025-09-04T12:00:29.386Z] Command:       /opt/homebrew/Cellar/node/24.2.0/bin/node /opt/homebrew/bin/firebase deploy --only hosting
+[debug] [2025-09-04T12:00:29.386Z] CLI Version:   14.15.1
+[debug] [2025-09-04T12:00:29.386Z] Platform:      darwin
+[debug] [2025-09-04T12:00:29.386Z] Node Version:  v24.2.0
+[debug] [2025-09-04T12:00:29.386Z] Time:          Thu Sep 04 2025 14:00:29 GMT+0200 (Central European Summer Time)
+[debug] [2025-09-04T12:00:29.386Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-09-04T12:00:29.477Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-04T12:00:29.478Z] > authorizing via signed-in user (tattila.ninox@gmail.com)
+[debug] [2025-09-04T12:00:29.478Z] [iam] checking project orlomed-f8f9f for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-09-04T12:00:29.478Z] Checked if tokens are valid: true, expires at: 1756990375978
+[debug] [2025-09-04T12:00:29.478Z] Checked if tokens are valid: true, expires at: 1756990375978
+[debug] [2025-09-04T12:00:29.479Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/orlomed-f8f9f:testIamPermissions [none]
+[debug] [2025-09-04T12:00:29.479Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/orlomed-f8f9f:testIamPermissions x-goog-quota-user=projects/orlomed-f8f9f
+[debug] [2025-09-04T12:00:29.479Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/orlomed-f8f9f:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}

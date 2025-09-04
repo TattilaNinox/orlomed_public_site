@@ -1,0 +1,14 @@
+[debug] [2025-09-04T11:55:59.162Z] ----------------------------------------------------------------------
+[debug] [2025-09-04T11:55:59.169Z] Command:       /opt/homebrew/Cellar/node/24.2.0/bin/node /opt/homebrew/bin/firebase use lomedu-public --project lomedu-public
+[debug] [2025-09-04T11:55:59.169Z] CLI Version:   14.15.1
+[debug] [2025-09-04T11:55:59.169Z] Platform:      darwin
+[debug] [2025-09-04T11:55:59.169Z] Node Version:  v24.2.0
+[debug] [2025-09-04T11:55:59.169Z] Time:          Thu Sep 04 2025 13:55:59 GMT+0200 (Central European Summer Time)
+[debug] [2025-09-04T11:55:59.169Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-09-04T11:55:59.303Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-04T11:55:59.303Z] > authorizing via signed-in user (tattila.ninox@gmail.com)
+[debug] [2025-09-04T11:55:59.304Z] Checked if tokens are valid: true, expires at: 1756990375978
+[debug] [2025-09-04T11:55:59.304Z] Checked if tokens are valid: true, expires at: 1756990375978
+[debug] [2025-09-04T11:55:59.304Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/lomedu-public/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-09-04T11:55:59.304Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/lomedu-public/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/lomedu-public
