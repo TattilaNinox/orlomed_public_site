@@ -1,3 +1,7 @@
+html {
+    overflow-y: scroll; /* mindig fenntart helyet a görgetősávnak */
+}
+
 :root {
     --bs-primary: #004d40; /* Sötétzöld */
     --bs-primary-rgb: 0, 77, 64;
@@ -10,6 +14,7 @@
 
 body {
     background-color: var(--bs-body-bg);
+    padding-top: 100px; /* eltolás a magas navbar miatt */
 }
 
 /* Főoldali címsor (AppSheet kék) */
@@ -35,3 +40,17 @@ h1.display-5 {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 /* end */
+
+/* Logo a címsor mellett */
+.home-logo {
+    height: 4em; /* 4x nagyobb a cím betűmérethez képest */
+    width: auto;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Nav brand logo */
+.brand-logo {
+    height: 80px; /* kétszeres méret */
+    width: auto;
+}
